@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  height: 75vh;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  background-image: url(../images/background-image.svg);
+  background-size: cover;
+  min-height: 26rem;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

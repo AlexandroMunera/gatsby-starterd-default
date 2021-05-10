@@ -1,29 +1,32 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React, { useEffect, useState } from "react"
+import Seo from "../components/atoms/seo/seo"
+import ListNewReleases from "../components/organisms/list-new-releases/ListNewReleases"
+import Login from "./Login"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+const IndexPage = ({ location }) => {
+  const [tokenSpotify, setTokenSpotify] = useState()
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setTokenSpotify(localStorage.getItem("tokenSpotify"))
+    }
+
+    if (location.hash !== "") {
+      if (location.hash.split("=")[0] === "#access_token") {
+        setTokenSpotify(location.hash.split("=")[1])
+        localStorage.setItem("tokenSpotify", location.hash.split("=")[1])
+      }
+    }
+  }, [location.hash])
+
+  return tokenSpotify !== null ? (
+    <>
+      <Seo title="Home" />
+      <ListNewReleases />
+    </>
+  ) : (
+    <Login />
+  )
+}
 
 export default IndexPage

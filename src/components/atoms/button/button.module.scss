@@ -1,0 +1,12 @@
+.button {
+  background-color: var.$primary-color;
+  color: var.$text-color;
+  border: none;
+  padding: 0.5rem;
+  border-radius: var.$button-border-radius;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,14 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 0 1rem;
+  max-width: 18rem;
+  background-color: #2d333a;
+  color: white;
+  border-radius: 0.5rem;
+
+  &__img {
+    max-height: 15rem;
+    border-radius: 0.5rem;
+  }
+}
